@@ -61,18 +61,25 @@ function draw()
              stroke(r, g, b);
             noFill();
             rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height); 
-            document.getElementById("Baby_found_or_NotFound").innerHTML = "Baby found";
-            song.stop();
+            if(objects[i].label == "person")
+            {
+                song.stop();
+                document.getElementById("Baby_found_or_NotFound").innerHTML = "Baby found";
+            }
+
+         else {
+            document.getElementById("Baby_found_or_NotFound").innerHTML = "Baby not found";
+            song.play();
         }
-    } else {
-        document.getElementById("Baby_found_or_NotFound").innerHTML = "Baby not found";
-        song.play();
-    }
+            
+        }
 
 
-    if(objects.length < 0)
+    if(objects.length == 0)
     {
         document.getElementById("Baby_found_or_NotFound").innerHTML = "Baby not found";
         song.play();
+    }
+    
     }
 }
